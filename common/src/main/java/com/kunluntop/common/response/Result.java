@@ -1,6 +1,8 @@
 package com.kunluntop.common.response;
 
-public class Result<T>{
+import java.io.Serializable;
+
+public class Result<T> implements Serializable {
         /*错误码*/
         private Integer code;
         /*提示信息*/
