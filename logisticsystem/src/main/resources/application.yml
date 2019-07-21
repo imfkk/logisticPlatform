@@ -1,1 +1,18 @@
-
+server:
+  port: 8011
+spring:
+  application:
+    name: logisticsystem
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/logisticsdatabase?characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false
+  redis:
+    host: 127.0.0.1
+    port: 6379
+eureka:
+  client:
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:7001/eureka/
