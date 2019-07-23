@@ -8,7 +8,9 @@ import com.kunluntop.common.response.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Random;
 
 @Service
 public class CarsServiceImpl  implements CarsService {
@@ -22,8 +24,13 @@ public class CarsServiceImpl  implements CarsService {
     }
 
     @Override
+    //@TxTransaction
+    //@Transactional
     public Result insert(TbCarEntity car) {
-        return null;
+        car.setId(new Random().nextInt(30));
+        car.setPlateNum("123456");
+        carsRepository.save(car);
+        return ResultUtil.success("");
     }
 
     @Override

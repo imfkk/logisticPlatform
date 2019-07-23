@@ -7,13 +7,18 @@ import com.kunluntop.logisticsystem.entity.TbOrderEntity;
 import com.kunluntop.logisticsystem.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
 public class OrderServiceImpl implements OrderService {
+    private String url="http://CARSYSTEM:8010/cars/ListCars";
     @Autowired
     private OrderRepository orderRepository;
+    @Autowired
+    private RestTemplate restTemplate;
 
     @Override
     public Result list() {
@@ -22,8 +27,18 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+   // @TxTransaction(isStart = true)
+   // @Transactional
     public Result insert(TbOrderEntity order) {
-        return null;
+        TbOrderEntity orderEntity=new TbOrderEntity();
+        orderEntity.setId(1234);
+        orderEntity.setOrderCode("1234554646");
+        orderEntity= orderRepository.save(orderEntity);
+
+        int a=1/0;
+        restTemplate.getForObject(url,Result.class);
+
+        return ResultUtil.error(-1,"32132");
     }
 
     @Override

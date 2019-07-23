@@ -23,4 +23,12 @@ public class CarsController {
 
        // return  restTemplate.getForObject(url,Result.class);
     }
+
+    @RequestMapping(value = "/insert" ,method = RequestMethod.GET)
+    public Result insert() {
+        return  orderService.insert(null);
+
+        // return  restTemplate.getForObject(url,Result.class);
+    }
+
 }

@@ -1,5 +1,6 @@
 package com.kunluntop.catsystem.controller;
 
+import com.kunluntop.catsystem.entity.TbCarEntity;
 import com.kunluntop.catsystem.service.CarsService;
 import com.kunluntop.common.response.Result;
 import com.kunluntop.common.response.ResultUtil;
@@ -17,5 +18,10 @@ public class CarsController {
     @RequestMapping(value = "/ListCars" ,method = RequestMethod.GET)
     public Result ListCars() {
        return carsService.list();
+    }
+
+    @RequestMapping(value = "/add" ,method = RequestMethod.GET)
+    public Result addCars() {
+        return carsService.insert(new TbCarEntity());
     }
 }
