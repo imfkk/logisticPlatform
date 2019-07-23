@@ -1,5 +1,6 @@
 package com.kunluntop.logisticsystem.service.impl;
 
+import com.codingapi.tx.annotation.TxTransaction;
 import com.kunluntop.common.response.Result;
 import com.kunluntop.common.response.ResultUtil;
 import com.kunluntop.logisticsystem.dao.OrderRepository;
@@ -14,7 +15,7 @@ import java.util.List;
 
 @Service
 public class OrderServiceImpl implements OrderService {
-    private String url="http://CARSYSTEM:8010/cars/ListCars";
+    private String url="http://CARSYSTEM:8010/cars/add";
     @Autowired
     private OrderRepository orderRepository;
     @Autowired
@@ -27,15 +28,15 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-   // @TxTransaction(isStart = true)
-   // @Transactional
+    @TxTransaction(isStart = true)
+    @Transactional
     public Result insert(TbOrderEntity order) {
         TbOrderEntity orderEntity=new TbOrderEntity();
         orderEntity.setId(1234);
         orderEntity.setOrderCode("1234554646");
         orderEntity= orderRepository.save(orderEntity);
 
-        int a=1/0;
+       // int a=1/0;
         restTemplate.getForObject(url,Result.class);
 
         return ResultUtil.error(-1,"32132");

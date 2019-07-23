@@ -1,5 +1,6 @@
 package com.kunluntop.catsystem.service.impl;
 
+import com.codingapi.tx.annotation.TxTransaction;
 import com.kunluntop.catsystem.dao.CarsRepository;
 import com.kunluntop.catsystem.entity.TbCarEntity;
 import com.kunluntop.catsystem.service.CarsService;
@@ -24,12 +25,13 @@ public class CarsServiceImpl  implements CarsService {
     }
 
     @Override
-    //@TxTransaction
-    //@Transactional
+    @TxTransaction
+    @Transactional
     public Result insert(TbCarEntity car) {
         car.setId(new Random().nextInt(30));
         car.setPlateNum("123456");
         carsRepository.save(car);
+        int i=1/0;
         return ResultUtil.success("");
     }
 
