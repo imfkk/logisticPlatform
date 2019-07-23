@@ -28,6 +28,7 @@ public class CarsServiceImpl  implements CarsService {
     @TxTransaction
     @Transactional
     public Result insert(TbCarEntity car) {
+       // int i=1/0;
         car.setId(new Random().nextInt(30));
         car.setPlateNum("123456");
         carsRepository.save(car);

@@ -12,6 +12,7 @@ import org.springframework.web.client.RestTemplate;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Random;
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -28,17 +29,17 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    @TxTransaction(isStart = true)
+    @TxTransaction
     @Transactional
     public Result insert(TbOrderEntity order) {
         TbOrderEntity orderEntity=new TbOrderEntity();
-        orderEntity.setId(1234);
+        orderEntity.setId(new Random().nextInt(100));
         orderEntity.setOrderCode("1234554646");
         orderEntity= orderRepository.save(orderEntity);
 
-       // int a=1/0;
+      // int a=1/0;
         restTemplate.getForObject(url,Result.class);
-
+       // int i=1/0;
         return ResultUtil.error(-1,"32132");
     }
 
