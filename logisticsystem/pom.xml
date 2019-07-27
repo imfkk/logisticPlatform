@@ -65,7 +65,6 @@
         <dependency>
             <groupId>com.kunluntop</groupId>
             <artifactId>common</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
         <dependency>
@@ -77,6 +76,12 @@
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.kunluntop</groupId>
+            <artifactId>carsystem-api</artifactId>
+        </dependency>
+
 
     </dependencies>
 
