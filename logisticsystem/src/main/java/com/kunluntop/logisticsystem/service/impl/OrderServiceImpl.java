@@ -1,5 +1,6 @@
 package com.kunluntop.logisticsystem.service.impl;
 
+import api.CarClientService;
 import com.codingapi.tx.annotation.TxTransaction;
 import com.kunluntop.common.response.ResultUtil;
 import com.kunluntop.logisticsystem.dao.OrderRepository;
@@ -21,13 +22,14 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private RestTemplate restTemplate;
 
-    //private
+    @Autowired
+    private CarClientService carClientService;
 
 
     @Override
     public Result list() {
-        List<TbOrderEntity> carEntityList = orderRepository.findAll();
-        return ResultUtil.success(carEntityList);
+      return   carClientService.getCarList();
+
     }
 
     @Override
